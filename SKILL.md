@@ -1,60 +1,70 @@
 ---
 name: jsme-translate
 description: >-
-  专业工程技术规范与标准翻译工具（支持 JSME 日本机械学会标准、SMACNA 暖通风管标准、ASME、ISO、ASTM、GB 等工程规范）。
-  当用户需要翻译机械工程、暖通空调、管道压力容器、焊接材料等技术文档，或进行专业工程中英/中日双语对照翻译与术语本地化时使用本技能。
+  国际暖通与通风风管技术规范翻译工具（支持 DW/144、DW/143、SMACNA、ISO 15138 海上油气暖通、ASTM 板材标准等）。
+  当用户需要翻译通风管道施工、风管漏风量测试、海上平台 HVAC、钣金制造与材料检验等技术规范、工程规格书，
+  或要求进行专业技术中英双语对照翻译与术语本地化时使用本技能。
 ---
 
-# JSME & 工程技术标准翻译规范 (JSME_Translate)
+# 国际风管与暖通工程标准翻译规范 (JSME_Translate)
 
-本技能专为机械工程、暖通空调、压力容器及核电/工业设备领域的标准与技术文档翻译设计。执行翻译任务时，严格遵守以下准则。
-
----
-
-## 一、核心翻译原则
-
-1. **术语专业严谨，严禁生硬机翻**
-   - 必须遵循国内外公认的工程术语规范（如 GB/T 通用术语、JSME 基準用語、ASME Boiler and Pressure Vessel Code 规范用语）。
-   - 优先查阅 [references/glossary.md](./references/glossary.md) 与 [references/smacna_glossary.md](./references/smacna_glossary.md)。
-
-2. **规范条款级别词汇的精确对等**
-   - 工程标准中语气词具有法律与验收效力，必须严格区分：
-     - **Shall / べし / なければならない** $\rightarrow$ **必须 / 应**（强制性条款）
-     - **Should / 望ましい** $\rightarrow$ **宜 / 建议**（推荐性条款）
-     - **May / 差し支えない** $\rightarrow$ **可以 / 得**（允许性条款）
-     - **Shall not / てはならない** $\rightarrow$ **严禁 / 不得**（禁止性条款）
-
-3. **专有名词与缩写规则**
-   - 标准代号、型号、牌号必须保持原样（如 `JSME S NC1`, `SMACNA 006-2020`, `ASTM A36`, `SS400`, `SUS304`）。
-   - 首次出现的行业公认缩写，使用 **中文译名 (英文/日文缩写)**，后续直接使用公认缩写。例如：
-     - *TDC/TDF (Transverse Duct Connector / Flange)* $\rightarrow$ 机制法兰/共板法兰 (TDC/TDF)
-     - *NDT (Non-Destructive Testing)* $\rightarrow$ 无损检测 (NDT)
-     - *PWHT (Post-Weld Heat Treatment)* $\rightarrow$ 焊后热处理 (PWHT)
-
-4. **工程量与单位处理**
-   - 原文单位完整保留。美制/英制单位必须在括号内注明公制国际标准单位（SI）：
-     - 例：`2 in. wg` $\rightarrow$ `2 in. wg (约 500 Pa)`
-     - 例：`1/2 inch` $\rightarrow$ `1/2 英寸 (12.7 mm)`
-     - 例：`50 psi` $\rightarrow$ `50 psi (约 0.345 MPa)`
+本技能专为**通风空调风管制造、漏风量测试、海上石油天然气平台 HVAC 以及钣金工程材料**等专业标准设计，重点支持：
+* **BESA DW/144**（金属风管制造与安装规范：低压、中压、高压风管系统）
+* **BESA DW/143**（风管系统漏风量测试实用指南）
+* **SMACNA**（美国暖通空调与钣金承包商协会：金属与柔性风管施工标准、漏风测试手册）
+* **ISO 15138**（石油与天然气工业 — 海上生产装置 — 采暖、通风与空调 HVAC）
+* **ASTM 材料标准**（镀锌钢板 ASTM A653、不锈钢板 ASTM A240、ASTM A15 等材料与涂层标准）
 
 ---
 
-## 二、默认输出格式（中英/中日双语对照）
+## 一、核心翻译准则
 
-为了方便工程人员校对与审核，默认采用**段落级双语对照**：
+### 1. 规范条款语气词的法律与验收效力对等
+工程与国际规范中语气词具有强制验收效力，必须严格翻译：
+* **Shall / Must** $\rightarrow$ **必须 / 应**（强制性、法定合格判定项）
+* **Should / Recommended** $\rightarrow$ **宜 / 建议**（推荐性、良好工程实践）
+* **May / Permitted** $\rightarrow$ **可以 / 得**（允许采用的备选方案）
+* **Shall not / Prohibited** $\rightarrow$ **严禁 / 不得**（绝对禁止项）
 
-> **[原文]**
-> The transverse joints shall be securely fastened to prevent air leakage exceeding the allowable class.
+### 2. 标准体系与专有名词精准映射
+* **英国 BESA 标准体系 (DW/144, DW/143)**：
+  * 压力分级：`Class A` (低压 500 Pa), `Class B` (中压 1000 Pa), `Class C` (高压 2000 Pa), `Class D` (超高压 2500 Pa)。
+  * 接头与加固：`Slide-on Flange` (滑入式法兰/机制插接法兰), `Mez / Doby Flange` (梅兹/多比型角码法兰), `Stiffener` (加劲件/加固肋), `Turning Vane` (导流叶片), `Spigot` (插管短接/套接管)。
+  * 漏风测试：`Permissible Leakage Rate` (允许漏风率), `Static Gauge Pressure` (静压表压), `Test Section` (测试管段)。
+* **美标 SMACNA 体系**：
+  * 板厚号数 `Gauge (ga.)`、静压等级（`in. wg`）、咬口形式（`TDC/TDF 共板/机制法兰`, `Pittsburgh Lock 匹兹堡咬口`, `Slip & Drive S码/C码插条`）、漏风等级（`CL 3, 6, 12, 24`）。
+* **海上平台 HVAC 体系 (ISO 15138)**：
+  * 防爆与安全：`Hazardous Area` (危险区域/防爆分区), `Pressurization` (正压保护/加压), `Blast Damper` (抗爆阀/防冲击波阀), `A-60 / H-120 Fire Damper` (A-60 / H-120 级耐火/气密防火阀), `Fire and Gas (F&G) System` (火气探测系统)。
+  * 海洋腐蚀与材料：`316L Stainless Steel`, `Droplet Separator / Mist Eliminator` (汽水分离器/除雾百叶), `Heavy-duty Industrial Damper` (重型工业风阀)。
+* **材料标准 (ASTM)**：
+  * 材质牌号与镀层重量（如 `G90 / Z275` 镀锌层重量、屈服强度 `Yield Strength`、延伸率 `Elongation`）原样保留并附带中文释义。
+
+### 3. 工程单位与公式智能处理
+* **双单位对照**：英制单位（in. wg, psi, gauge, cfm, ft/min）在译文中完整保留，并在括号内附上公制 SI 单位换算值：
+  * 例：`4 in. wg` $\rightarrow$ `4 in. wg (约 1000 Pa)`
+  * 例：`20 ga.` $\rightarrow$ `20 ga. (公称厚度约 0.9 mm)`
+  * 例：`1500 fpm` $\rightarrow$ `1500 fpm (约 7.6 m/s)`
+* **计算公式还原**：漏风量公式、阻力计算采用标准 $\LaTeX$ 渲染，如 DW/143 漏风限值计算：
+  $$0.024 \times p^{0.65} \quad (\text{Class A}), \quad 0.009 \times p^{0.65} \quad (\text{Class B})$$
+
+---
+
+## 二、默认输出格式（中英双语逐段对照）
+
+为便于工程图纸核对、监理审核与规格书技术答辩，默认采用**段落级双语对照**：
+
+> **[Original / 原文]**
+> Air duct systems shall be tested for air leakage in accordance with the procedures described in DW/143. For Class C ductwork, the maximum permissible air leakage rate shall not exceed $0.003 \times p^{0.65}\text{ litres/second/m}^2$.
 >
-> **【译文】**
-> 横向接头必须牢固紧固，以防止漏风量超过允许等级。
+> **【Translation / 译文】**
+> 风管系统必须按照 DW/143 规定的程序进行漏风量测试。对于 C 级 (Class C) 风管，最大允许漏风率严禁超过 $0.003 \times p^{0.65}\text{ L/(s}\cdot\text{m}^2\text{)}$。
 
-*注：若用户明确要求“仅输出中文”或“整理为报告”，则转为整篇结构化排版的纯中文技术报告格式。*
+*(若用户明确提出“只要中文”或“整理为工程报告”，则输出纯中文技术报告格式)*
 
 ---
 
-## 三、排版与结构完整性
+## 三、术语库快速参考
 
-1. **图表还原**：所有技术数据表必须完整转换为 Markdown 表格，表头逐项精准翻译，数值与容差原样保留。
-2. **公式与符号**：涉及力学、热力学计算公式必须使用标准 LaTeX 排版（如应力 $\sigma = \frac{P \cdot D}{2t}$）。
-3. **条文编号**：保持原文的章节编号（如 1.2.1, Table 2-1, Fig. 3-4），不可擅自合并或重排编号。
+翻译时优先遵循：
+* [DW/144、DW/143、ISO 15138 与材料术语表](./references/glossary.md)
+* [SMACNA 风管与钣金专用术语表](./references/smacna_glossary.md)
